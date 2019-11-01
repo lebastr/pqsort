@@ -1,9 +1,9 @@
 #include <vector>
 #include <tuple>
 #include "partition.h"
+#include <iostream>
 
-std::tuple<i_iterator, i_iterator> create_partition(std::vector<int> &array,
-						    i_iterator pivot_idx,
+std::tuple<i_iterator, i_iterator> create_partition(i_iterator pivot_idx,
 						    i_iterator begin,
 						    i_iterator end) {
 
@@ -23,21 +23,21 @@ std::tuple<i_iterator, i_iterator> create_partition(std::vector<int> &array,
   // 4) From idx to end with elements greater than pivot.
 
   // Goal: The third basket should disappear.
-  
+
   while (idx > pivot_end) {
     int value = *pivot_end;
 
     if (value == pivot) {
       pivot_end++;
     } else if (value < pivot) {
-      std::swap(pivot_end, pivot_start);
+      std::swap(*pivot_end, *pivot_start);
       pivot_start++;
       pivot_end++;
     } else {
       idx--;
-      std::swap(pivot_end, idx);
+      std::swap(*pivot_end, *idx);
     }
   }
-  
+
   return std::make_tuple(pivot_start, pivot_end);
 }

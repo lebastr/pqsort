@@ -6,8 +6,7 @@
 
 using i_iterator = std::vector<int>::iterator;
 
-std::tuple<i_iterator, i_iterator> create_partition(std::vector<int> &array,
-						    i_iterator pivot_idx,
+std::tuple<i_iterator, i_iterator> create_partition(i_iterator pivot_idx,
 						    i_iterator begin,
 						    i_iterator end);
 
